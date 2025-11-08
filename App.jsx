@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from './src/screens/HomeScreen';
-import ExerciseScreen from './src/screens/ExerciseScreen';
 
 const Stack = createStackNavigator();
 
@@ -14,7 +13,6 @@ const App = () => {
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Exercise" component={ExerciseScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
