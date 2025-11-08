@@ -1,12 +1,16 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 
 const TabNavigation = ({ activeTab, setActiveTab }) => {
   const tabs = ['Home', 'Body Map', 'Exercise Library', 'Profile', 'Support'];
 
   return (
     <View style={styles.tabsContainer}>
-      <View style={styles.tabs}>
+      <ScrollView 
+        horizontal 
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.tabsContent}
+      >
         {tabs.map((tab) => (
           <TouchableOpacity
             key={tab}
@@ -24,45 +28,50 @@ const TabNavigation = ({ activeTab, setActiveTab }) => {
             </Text>
           </TouchableOpacity>
         ))}
-      </View>
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   tabsContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    backgroundColor: '#FFFFFF',
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E7EB'
+  },
+  tabsContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    paddingHorizontal: 4
+  },
+  tab: {
     paddingHorizontal: 20,
-    paddingVertical: 16
+    paddingVertical: 10,
+    borderRadius: 20,
+    backgroundColor: 'transparent',
+    minWidth: 100,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  tabs: { 
-    flexDirection: 'row', 
-    backgroundColor: '#F3F4F6',
-    padding: 4,
-    borderRadius: 12
+  activeTab: {
+    backgroundColor: '#6366F1',
+    shadowColor: '#6366F1',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3
   },
-  tab: { 
-    flex: 1,
-    paddingVertical: 8,
-    paddingHorizontal: 6,
-    borderRadius: 8,
-    alignItems: 'center'
-  },
-  tabText: { 
-    fontSize: 11, 
+  tabText: {
+    fontSize: 14,
     fontWeight: '500',
     color: '#6B7280',
     textAlign: 'center'
   },
-  activeTab: { 
-    backgroundColor: '#FFFFFF',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2
-  },
-  activeTabText: { 
-    color: '#1F2937',
+  activeTabText: {
+    color: '#FFFFFF',
     fontWeight: '600'
   }
 });
